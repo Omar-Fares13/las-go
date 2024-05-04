@@ -5,3 +5,43 @@ https://drive.google.com/drive/folders/14JDjQRxrDsrp50qpk23jTaqeYFdgswbT?usp=sha
 https://drive.google.com/drive/folders/19HyulHdSfsJK3rgvEeZbOOz72R93hwBf?usp=sharing
 https://drive.google.com/drive/folders/1DOoSpipWFf1I4gcIS48IcldTMiAOavVS
 https://drive.google.com/drive/mobile/folders/1BAXez9FJKF_ASx79usd_-Xi47TdUYK73
+-- جدول الجمعيات الخيرية
+CREATE TABLE Charities (
+    CharityID NUMBER PRIMARY KEY,
+    CharityName VARCHAR2(100),
+    Description CLOB,
+    Website VARCHAR2(255)
+);
+
+-- جدول التبرعات
+CREATE TABLE Donations (
+    DonationID NUMBER PRIMARY KEY,
+    UserID NUMBER,
+    CharityID NUMBER,
+    Amount NUMBER(10, 2),
+    PaymentMethod VARCHAR2(50),
+    DonationDate DATE,
+    ConfirmationNumber VARCHAR2(20),
+    CONSTRAINT fk_user FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    CONSTRAINT fk_charity FOREIGN KEY (CharityID) REFERENCES Charities(CharityID)
+);
+
+-- جدول الفعاليات
+CREATE TABLE Events (
+    EventID NUMBER PRIMARY KEY,
+    EventName VARCHAR2(100),
+    DateOfEvent DATE,
+    Location VARCHAR2(255),
+    VolunteerCapacity NUMBER
+);
+
+-- جدول المتطوعين
+CREATE TABLE Volunteers (
+    VolunteerID NUMBER PRIMARY KEY,
+    EventID NUMBER,
+    UserID NUMBER,
+    VolunteerName VARCHAR2(100),
+    Email VARCHAR2(100),
+    CONSTRAINT fk_event FOREIGN KEY (EventID) REFERENCES Events(EventID),
+    CONSTRAINT fk_user_volunteer FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);

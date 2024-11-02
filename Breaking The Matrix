@@ -5,43 +5,8 @@ https://drive.google.com/drive/folders/14JDjQRxrDsrp50qpk23jTaqeYFdgswbT?usp=sha
 https://drive.google.com/drive/folders/19HyulHdSfsJK3rgvEeZbOOz72R93hwBf?usp=sharing
 https://drive.google.com/drive/folders/1DOoSpipWFf1I4gcIS48IcldTMiAOavVS
 https://drive.google.com/drive/mobile/folders/1BAXez9FJKF_ASx79usd_-Xi47TdUYK73
--- جدول الجمعيات الخيرية
-CREATE TABLE Charities (
-    CharityID NUMBER PRIMARY KEY,
-    CharityName VARCHAR2(100),
-    Description CLOB,
-    Website VARCHAR2(255)
-);
 
--- جدول التبرعات
-CREATE TABLE Donations (
-    DonationID NUMBER PRIMARY KEY,
-    UserID NUMBER,
-    CharityID NUMBER,
-    Amount NUMBER(10, 2),
-    PaymentMethod VARCHAR2(50),
-    DonationDate DATE,
-    ConfirmationNumber VARCHAR2(20),
-    CONSTRAINT fk_user FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    CONSTRAINT fk_charity FOREIGN KEY (CharityID) REFERENCES Charities(CharityID)
-);
 
--- جدول الفعاليات
-CREATE TABLE Events (
-    EventID NUMBER PRIMARY KEY,
-    EventName VARCHAR2(100),
-    DateOfEvent DATE,
-    Location VARCHAR2(255),
-    VolunteerCapacity NUMBER
-);
+/////////
 
--- جدول المتطوعين
-CREATE TABLE Volunteers (
-    VolunteerID NUMBER PRIMARY KEY,
-    EventID NUMBER,
-    UserID NUMBER,
-    VolunteerName VARCHAR2(100),
-    Email VARCHAR2(100),
-    CONSTRAINT fk_event FOREIGN KEY (EventID) REFERENCES Events(EventID),
-    CONSTRAINT fk_user_volunteer FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
+https://worker-morning-bonus-cbec.mevanen986.workers.dev/9ac918c717f1a143ace002083a38b9ad287a7a2038695d88b9dad4c5249c3afedf0be4858dc8a2472eae89bbd6958b2a869c84fe5de4eb3ef14554523d0426de12bf64b1bd559d32cfcafabdb8f99e4e41a15ce5376d5c727159fb509f0779381f7bc3014f7c5e4d3597e112b010fae304db2d56c58955b7f6730d9806d70492c6f6eeacc9a5f19acb8b349c8443efb3b7ed9f6681678be1ab85456b4c63eb8c5367d01c743f41440ede436e11c55d37::2b374987becdc2b83ba836d1444ba729/GamesLeech.com.Control.Ultimate.Edition.zip

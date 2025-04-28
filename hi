@@ -1,0 +1,29 @@
+result = 0 + 0j
+    for a, b in zip(vector1, vector2):
+        result += a.conjugate() * b
+    return result
+
+  sum_of_squares = 0
+    for v in vector:
+        sum_of_squares += abs(v)**2
+    return sum_of_squares**0.5
+
+  difference = []
+    for a, b in zip(vector1, vector2):
+        difference.append(a - b)
+    
+    return vector_norm(difference)
+
+  n = len(matrix)
+    
+    # Check if matrix is square
+    for row in matrix:
+        if len(row) != n:
+            raise ValueError("Matrix must be square.")
+    
+    # Check Hermitian property: A[i][j] == conjugate of A[j][i]
+    for i in range(n):
+        for j in range(n):
+            if matrix[i][j] != matrix[j][i].conjugate():
+                return False
+    return True
